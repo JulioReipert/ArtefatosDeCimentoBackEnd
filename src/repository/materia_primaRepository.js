@@ -15,7 +15,10 @@ export async function inserir(materia_prima) {
       INSERT INTO materia_prima (nome, quantidade) 
                     VALUES (?, ?) `;
 
-  let [info] = await connection.query(comando, [materia_prima.nome, materia_prima.quantidade]);
+  let [info] = await connection.query(comando, [
+    materia_prima.nome,
+    materia_prima.quantidade,
+  ]);
   return info.insertId;
 }
 
@@ -26,7 +29,11 @@ export async function alterar(id, materia_prima) {
            quantidade = ?
      WHERE id = ?`;
 
-  let [info] = await connection.query(comando, [materia_prima.nome, materia_prima.quantidade, id]);
+  let [info] = await connection.query(comando, [
+    materia_prima.nome,
+    materia_prima.quantidade,
+    id,
+  ]);
   return info.affectedRows;
 }
 

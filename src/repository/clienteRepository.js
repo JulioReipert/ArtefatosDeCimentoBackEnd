@@ -19,7 +19,14 @@ export async function inserir(cliente) {
       INSERT INTO cliente (nome, email, telefone, celular, tipo_documento, numero_documento) 
                     VALUES (?, ?, ?, ?, ?, ?) `;
 
-  let [info] = await connection.query(comando, [cliente.nome, cliente.email, cliente.telefone, cliente.celular, cliente.tipo_documento, cliente.numero_documento]);
+  let [info] = await connection.query(comando, [
+    cliente.nome,
+    cliente.email,
+    cliente.telefone,
+    cliente.celular,
+    cliente.tipo_documento,
+    cliente.numero_documento,
+  ]);
   return info.insertId;
 }
 
@@ -34,7 +41,15 @@ export async function alterar(id, cliente) {
            numero_documento = ?
      WHERE id = ?`;
 
-  let [info] = await connection.query(comando, [cliente.nome, cliente.email, cliente.telefone, cliente.celular, cliente.tipo_documento, cliente.numero_documento, id]);
+  let [info] = await connection.query(comando, [
+    cliente.nome,
+    cliente.email,
+    cliente.telefone,
+    cliente.celular,
+    cliente.tipo_documento,
+    cliente.numero_documento,
+    id,
+  ]);
   return info.affectedRows;
 }
 
