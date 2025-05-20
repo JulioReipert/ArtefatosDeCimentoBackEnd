@@ -4,27 +4,6 @@ CREATE TABLE login (
   senha VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE endereco (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  cep VARCHAR(10) NOT NULL,
-  cidade VARCHAR(100) NOT NULL,
-  bairro VARCHAR(100) NOT NULL,
-  rua VARCHAR(100) NOT NULL,
-  numero VARCHAR(20) NOT NULL,
-  complemento VARCHAR(100) NULL
-);
-
-CREATE TABLE usuario (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
-  telefone VARCHAR(20) NOT NULL,
-  cep VARCHAR(10) NOT NULL,
-  endereco INT,
-  login INT,
-  FOREIGN KEY (endereco) REFERENCES endereco(id),
-  FOREIGN KEY (login) REFERENCES login(id)
-);
-
 CREATE TABLE materia_prima (
   id INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
@@ -59,9 +38,8 @@ CREATE TABLE pedido (
   id INT PRIMARY KEY AUTO_INCREMENT,
   data_entrega DATE NOT NULL,
   cliente INT,
-  endereco INT,
+  endereco VARCHAR(200),
   emissao DATE NOT NULL,
-  FOREIGN KEY (cliente) REFERENCES cliente(id),
   FOREIGN KEY (endereco) REFERENCES endereco(id)
 );
 
