@@ -1,3 +1,7 @@
+CREATE DATABASE busquets;
+
+use busquets;
+
 CREATE TABLE login (
   id INT PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(100) NOT NULL,
@@ -39,8 +43,8 @@ CREATE TABLE pedido (
   data_entrega DATE NOT NULL,
   cliente INT,
   endereco VARCHAR(200),
-  emissao DATE NOT NULL,
-  FOREIGN KEY (endereco) REFERENCES endereco(id)
+  emissao DATE NOT NULL
+
 );
 
 CREATE TABLE item_pedido (
