@@ -17,7 +17,12 @@ export async function inserir(pedido) {
       INSERT INTO pedido (data_entrega, cliente, endereco, emissao) 
                     VALUES (?, ?, ?, ?) `;
 
-  let [info] = await connection.query(comando, [pedido.data_entrega, pedido.cliente, pedido.endereco, pedido.emissao]);
+  let [info] = await connection.query(comando, [
+    pedido.data_entrega,
+    pedido.cliente,
+    pedido.endereco,
+    pedido.emissao,
+  ]);
   return info.insertId;
 }
 
@@ -26,11 +31,15 @@ export async function alterar(id, pedido) {
   UPDATE pedido
        SET data_entrega = ?,
        cliente = ?,
-       endereco = ?,
-       emissao = ?
+       endereco = ?
      WHERE id = ?`;
 
-  let [info] = await connection.query(comando, [pedido.data_entrega, pedido.cliente, pedido.endereco, pedido.emissao, id]);
+  let [info] = await connection.query(comando, [
+    pedido.data_entrega,
+    pedido.cliente,
+    pedido.endereco,
+    id,
+  ]);
   return info.affectedRows;
 }
 

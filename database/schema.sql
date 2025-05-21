@@ -24,7 +24,7 @@ CREATE TABLE produto (
   cor VARCHAR(50) NOT NULL,
   peso DECIMAL(10,2) NOT NULL,
   valor DECIMAL(10,2) NOT NULL,
-  materia_prima INT,
+  materia_prima INT ,
   FOREIGN KEY (materia_prima) REFERENCES materia_prima(id)
 );
 
